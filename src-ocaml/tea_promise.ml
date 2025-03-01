@@ -29,7 +29,7 @@ let result promise msg =
                 )
               |> Js.Promise.catch (function err ->
                   let err_to_string err =
-                    '${err}' in
+                    "${err}" in
                   let reject = enq (Tea_result.Error (err_to_string err)) in
                   Js.Promise.resolve reject
                 )

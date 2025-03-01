@@ -60,7 +60,7 @@ let debug
   let view_styles () =
     let open Tea_html2 in
     let rule selector properties =
-      properties |> List.map (fun (k,v) -> k ^ ":" ^ v) |> String.concat ";" |> (fun x -> {j|$(selector) {$(x)}|j})  |> text
+            properties |> List.map (fun (k,v) -> k ^ ":" ^ v) |> String.concat ";" |> (fun x -> "${selector} {${x}}")  |> text
     in
     node "style" [] [
       rule "#debug.paused" [
