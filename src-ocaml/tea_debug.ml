@@ -246,7 +246,7 @@ let debug
             if paused then A.title "click to resume"
             else A.title "click to pause"
           ] [
-            {j|Explore History ($(history_count))|j}  |> text
+            "Explore History (${history_count})"  |> text
           ];
           if paused then
             view_history model selected_index

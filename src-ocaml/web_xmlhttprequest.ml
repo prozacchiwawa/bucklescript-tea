@@ -85,7 +85,7 @@ let getAllResponseHeadersAsList (x: t) : ((string * string) list, errors) Tea_re
   | Error _ as err -> err
   | Ok s -> Ok
     ( s
-      |> (fun s -> Js.String.split ("\r\n", s))
+      |> (fun s -> Js.String.split "\r\n" s [@@bs])
       |> Array.map (Js.String.splitAtMost ": " ~limit:2)
       |> Array.to_list
       |> List.filter (fun a -> Array.length a == 2)

@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "bsb clean",
     "clean:all": "bsb -clean-world",
-    "build": "bsb",
+    "build": "../node_modules/rescript/rescript build",
     "build:all": "bsb -make-world",
     "watch": "bsb -w",
     "build:test:client": "browserify --standalone=Test_client --outfile=lib/js/test-ocaml/app_test_client.js lib/js/test-ocaml/test_client.js",
