@@ -84,8 +84,8 @@ let getAllResponseHeadersAsList (x: t) : ((string * string) list, errors) Tea_re
   match getAllResponseHeaders x with
   | Error _ as err -> err
   | Ok s -> Ok
-    ( s
-      |> ((fun s -> Js.String.split "\r\n" s) [@bs])
+    (( fun s -> s
+      |> Js.String.split "\r\n"
       |> Array.map (Js.String.splitAtMost ": " ~limit:2)
       |> Array.to_list
       |> List.filter (fun a -> Array.length a == 2)
@@ -94,7 +94,7 @@ let getAllResponseHeadersAsList (x: t) : ((string * string) list, errors) Tea_re
           | [|key; value|] -> (key, value)
           | _ -> failwith "Cannot happen, already checked length"
         )
-    )
+    ) [@bs])
 
 let getAllResponseHeadersAsDict (x: t) : (string Map.Make(String).t, errors) Tea_result.t =
   let module StringMap = Map.Make(String) in
